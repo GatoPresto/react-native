@@ -19,6 +19,7 @@ const PropTypes = require('prop-types');
 const StyleSheet = require('StyleSheet');
 const View = require('View');
 const ViewPropTypes = require('ViewPropTypes');
+const ColorPropType = require('ColorPropType');
 
 const createReactClass = require('create-react-class');
 const requireNativeComponent = require('requireNativeComponent');
@@ -74,6 +75,11 @@ const DatePickerIOS = createReactClass({
     minimumDate: PropTypes.instanceOf(Date),
 
     /**
+     * Text color.
+     */
+    textColor: ColorPropType,
+
+    /**
      * The date picker mode.
      */
     mode: PropTypes.oneOf(['date', 'time', 'datetime']),
@@ -101,6 +107,7 @@ const DatePickerIOS = createReactClass({
   getDefaultProps: function(): DefaultProps {
     return {
       mode: 'datetime',
+      textColor: '#000',
     };
   },
 
@@ -141,6 +148,7 @@ const DatePickerIOS = createReactClass({
           }
           mode={props.mode}
           minuteInterval={props.minuteInterval}
+          textColor={props.textColor}
           timeZoneOffsetInMinutes={props.timeZoneOffsetInMinutes}
           onChange={this._onChange}
           onStartShouldSetResponder={() => true}
